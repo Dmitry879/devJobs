@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Employer Jobs</title>
+	    <th:block th:replace="~{fragments/layout :: head}"></th:block>
+	</head>
+	
+	<body class="text-white">
+	
+		<nav th:replace="~{fragments/layout :: navbar}"></nav>
+		
+		<div class="container mt-5">
+		
+			<h1 class="text-center">Employer Jobs</h1>
+			
+			<div sec:authorize="hasRole('EMPLOYER')">
+				<a th:href="@{/employerJobs/create}" class="btn btn-secondary">Add New Job</a>
+			</div>
+			
+			<hr>
+			
+			<div class="text-center" th:if="${#lists.isEmpty(employerJobs)}">
+				<p>There are no jobs to display.</p>
+			</div>
+			
+			<table class="table table-striped" th:if="${!#lists.isEmpty(employerJobs)}">
+			
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Position</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr th:each="posting, jobNum : ${employerJobs}">
+						<td th:text="${jobNum.count}">1</td>
+						<td th:text="${posting.position}">Position</td>
+						<td>
+							<a class="btn btn-secondary btn-sm"
+							   th:href="@{/jobPostings/{id}(id=${posting.id})}">View</a>
+							<a class="btn btn-warning btn-sm"
+							   th:href="@{/employerJobs/edit/{id}(id=${posting.id})}">Edit</a>
+							<a class="btn btn-danger btn-sm"
+							   th:href="@{/employerJobs/delete/{id}(id=${posting.id})}"
+							   onclick="return confirm ('Are you sure you want to delete this job announcement?')">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+			
+			</table>
+		
+		</div>
+	
+	</body>
+	
+	<!--
+	<h1>Job Postings</h1>
+	
+	    <div sec:authorize="hasRole('EMPLOYER')">
+	        <a th:href="@{/jobPostings/create}">Add New Job</a>
+	    </div>
+	
+	    <hr>
+	
+	    <div th:if="${#lists.isEmpty(jobPostings)}">
+	        <p>There are no jobs to display.</p>
+	    </div>
+	
+	    <table th:if="${!#lists.isEmpty(jobPostings)}" border="1" cellpadding="8">
+	        <thead>
+	            <tr>
+	                <th>Position</th>
+	                <th>Description</th>
+	                <th>Requirements</th>
+	                <th>Actions</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr th:each="posting : ${jobPostings}">
+	                <td th:text="${posting.position}">Position</td>
+	                <td th:text="${posting.description}">Description</td>
+	                <td th:text="${posting.requirements}">Requirements</td>
+	                <td>
+	                    <a th:href="@{/jobPostings/{id}(id=${posting.id})}">View</a>
+	
+	                    <span sec:authorize="hasRole('EMPLOYER')">
+	                        |
+	                        <a th:href="@{/jobPostings/edit/{id}(id=${posting.id})}">Edit</a>
+	                        |
+	                        <a th:href="@{/jobPostings/delete/{id}(id=${posting.id})}"
+	                           onclick="return confirm('Are you sure you want to delete this job posting?');">Delete</a>
+	                    </span>
+	                </td>
+	            </tr>
+	        </tbody>
+	    </table>
+	-->	    
+</html>

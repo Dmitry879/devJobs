@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: devJobs
+  datasource:
+    url: jdbc:mysql://localhost:3306/dev_jobs?createDatabaseIfNotExist=true
+    username: root
+    password: root

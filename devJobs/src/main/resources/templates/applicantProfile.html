@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Profile</title>
+	    <th:block th:replace="~{fragments/layout :: head}"></th:block>
+	</head>
+
+	<body class="text-white">
+	
+	    <nav th:replace="~{fragments/layout :: navbar}"></nav>
+			
+			<div class="container mt-5">
+			
+				<h1 class="text-center">Profile</h1>
+				
+				<hr>
+				
+				<div class="row justify-content-center">
+				
+					<div class="col-md-10 col-lg-8">
+					
+						<div class="card">
+					
+							<div class="card-header">
+								<h2 class="card-title" th:text="${applicant.account.username}">Username</h2>
+							</div>
+							
+							<div class="card-body">
+								<h5>Name: </h5>
+								<p class="card-text">
+									<span th:text="${applicant.firstName}"></span> <span th:text="${applicant.lastName}"></span>
+								</p>
+								
+								<h5>Date of Birth:</h5>
+								<p class="card-text" th:text="${applicant.dateOfBirth}">Date of Birth</p>
+								
+								<h5>Phone:</h5>
+								<p class="card-text" th:text="${applicant.phone}">Phone</p>
+								
+								<h5>Email:</h5>
+								<p class="card-text" th:text="${applicant.email}">Email</p>
+								
+								<h5>Qualifications:</h5>
+								<p class="card-text" th:text="${applicant.qualDescript}">Qualifications</p>
+								
+							</div>
+							
+							<div class="card-footer">
+							
+								<a class="btn btn-secondary btn-sm"
+										  th:href="@{/}">Back</a>
+								
+							</div>
+				
+						</div>
+					
+					</div>
+				
+				</div>		
+			
+			</div>
+	
+	</body>
+
+</html>

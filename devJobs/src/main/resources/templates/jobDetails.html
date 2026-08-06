@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Job Details</title>
+	    <th:block th:replace="~{fragments/layout :: head}"></th:block>
+	</head>
+
+	<body class="text-white">
+	
+	    <nav th:replace="~{fragments/layout :: navbar}"></nav>
+			
+			<div class="container mt-5">
+			
+				<h1 class="text-center">Job Details</h1>
+				
+				<hr>
+				
+				<div class="row justify-content-center">
+				
+					<div class="col-md-10 col-lg-8">
+					
+						<div class="card">
+					
+							<div class="card-header">
+								<h2 class="card-title" th:text="${posting.position}">Position</h2>
+								<p>Posted by <span th:text="${posting.employer.name}"></span></p>
+							</div>
+							
+							<div class="card-body">
+								<h3>Description:</h3>
+								<p class="card-text" th:text="${posting.description}">Description Text</p>
+								
+								<h3>Requirements:</h3>
+								<p class="card-text" th:text="${posting.requirements}">Requirements Text</p>
+							</div>
+							
+							<div class="card-footer">
+							
+								<a class="btn btn-secondary btn-sm"
+										  th:href="@{/jobPostings}"
+										  sec:authorize="hasRole('APPLICANT')">Back</a>
+										  
+								<a class="btn btn-secondary btn-sm"
+										  th:href="@{/jobPostings}"
+										  sec:authorize="hasRole('EMPLOYER')">View All Jobs</a>
+								<a class="btn btn-secondary btn-sm"
+								   th:href="@{/employerJobs}"
+								   sec:authorize="hasRole('EMPLOYER')">View Employer Jobs</a>
+								
+							</div>
+				
+						</div>
+					
+					</div>
+				
+				</div>		
+			
+			</div>
+	
+	</body>
+
+</html>

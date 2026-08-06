@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	  
+	<head>
+	
+	    <title>Employer Registration</title>
+	    
+	    <th:block th:replace="~{fragments/layout :: head}"></th:block>
+	    
+	    <style>
+	    
+		    h1 {
+		    margin-bottom: 6rem;
+		    }
+	    
+	    </style>
+	    
+	</head>
+
+	<body class="text-white">
+	
+	    <nav th:replace="~{fragments/layout :: navbar}"></nav>
+			
+			<div class="container mt-5">
+				
+				<h1 class="text-center">Create New Job</h1>
+				
+				<form th:action="@{/employerJobs/create}" 
+				      th:object="${posting}" 
+				      method="post">
+				      
+				     
+			     	<div class="mb-4">
+					    <label for="position" class="form-label">Position:</label>
+					    <input type="text" class="form-control w-50" id="position" th:field="*{position}">			
+					</div>
+				
+				    <div class="mb-4">
+					    <label for="description" class="form-label">Job Description:</label>
+					    <textarea class="form-control" id="description" th:field="*{description}" rows=15></textarea>		    
+				    </div>
+				    
+					<div class="mb-4">
+					    <label for="requirements" class="form-label">Requirements:</label>
+					    <textarea class="form-control" id="requirements" th:field="*{requirements}" rows=15></textarea>			
+					</div>
+				     	
+				    <button type="submit" class="btn btn-secondary mt-3">Post</button>
+				
+				</form>
+			
+			</div>
+	
+	</body>
+
+</html>

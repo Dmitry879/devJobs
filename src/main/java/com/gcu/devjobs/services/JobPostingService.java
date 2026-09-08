@@ -16,7 +16,7 @@ import com.gcu.devjobs.repositories.JobPostingRepository;
 @Service
 public class JobPostingService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(JobPostingController.class);
+	private static final Logger logger = LoggerFactory.getLogger(JobPostingService.class);
 	
 	private final JobPostingRepository repository;
 	

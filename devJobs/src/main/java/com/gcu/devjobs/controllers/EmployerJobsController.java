@@ -23,7 +23,7 @@ import com.gcu.devjobs.services.JobPostingService;
 @Controller
 public class EmployerJobsController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(JobPostingController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EmployerJobsController.class);
 	
 	private final JobPostingService service;
 	private final AccountRepository accountRepository;

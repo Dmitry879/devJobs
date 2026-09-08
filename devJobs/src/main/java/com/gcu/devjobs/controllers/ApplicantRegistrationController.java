@@ -16,7 +16,7 @@ import jakarta.validation.Valid;
 @Controller
 public class ApplicantRegistrationController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(JobPostingController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ApplicantRegistrationController.class);
 	
 	private final ApplicantRegistrationService service;
 	

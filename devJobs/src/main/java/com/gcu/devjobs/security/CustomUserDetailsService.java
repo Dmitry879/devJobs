@@ -15,7 +15,7 @@ import com.gcu.devjobs.repositories.AccountRepository;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(JobPostingController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
 	
 	private final AccountRepository repository;
 	

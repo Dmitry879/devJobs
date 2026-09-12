@@ -28,10 +28,16 @@ jobs:
         working-directory: devJobs
         run: mvn clean package -DskipTests
 
-      - name: Show GitHub OIDC claims
-        uses: github/actions-oidc-debugger@main
+      - name: Show GitHub OIDC subject
+        uses: actions/github-script@v8
         with:
-          audience: sts.amazonaws.com
+          script: |
+            const token = await core.getIDToken('sts.amazonaws.com');
+            const payload = JSON.parse(
+              Buffer.from(token.split('.')[1], 'base64url').toString('utf8')
+            );
+            core.info(`OIDC subject: ${payload.sub}`);
+            core.info(`OIDC audience: ${payload.aud}`);
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4

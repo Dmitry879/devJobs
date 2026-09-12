@@ -25,6 +25,7 @@ jobs:
           cache: maven
 
       - name: Build application
+        working-directory: devJobs
         run: mvn clean package -DskipTests
 
       - name: Configure AWS credentials
@@ -39,4 +40,4 @@ jobs:
           aws-region: us-east-1
           application-name: dev-jobs
           environment-name: Dev-jobs-env
-          deployment-package-path: target/devJobs-0.0.1-SNAPSHOT.jar
+          deployment-package-path: devJobs/target/devJobs-0.0.1-SNAPSHOT.jar

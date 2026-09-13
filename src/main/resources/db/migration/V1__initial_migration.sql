@@ -1,4 +1,4 @@
-CREATE TABLE `dev_jobs`.`applicants` (
+CREATE TABLE `applicants` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `dev_jobs`.`applicants` (
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC));
   
-  CREATE TABLE `dev_jobs`.`employers` (
+  CREATE TABLE `employers` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(255) NOT NULL,

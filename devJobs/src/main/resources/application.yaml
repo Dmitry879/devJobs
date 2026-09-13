@@ -4,6 +4,6 @@ spring:
   application:
     name: devJobs
   datasource:
-    url: jdbc:mysql://database-1.cez6e4ug6f0e.us-east-1.rds.amazonaws.com:3306/dev_jobs
-    username: admin
-    password: "Development789"
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}

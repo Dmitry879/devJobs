@@ -1,4 +1,4 @@
-CREATE TABLE `dev_jobs`.`job_postings` (
+CREATE TABLE `job_postings` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `position` VARCHAR(100) NOT NULL,
   `description` TEXT NOT NULL,
@@ -9,12 +9,12 @@ CREATE TABLE `dev_jobs`.`job_postings` (
 
   CONSTRAINT `fk_job_posting_employer`
     FOREIGN KEY (`employer_id`)
-    REFERENCES `dev_jobs`.`employers` (`id`)
+    REFERENCES `employers` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
 
-CREATE TABLE `dev_jobs`.`job_applications` (
+CREATE TABLE `job_applications` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `application_date` DATETIME NOT NULL,
     `cover_letter` TEXT NOT NULL,
@@ -26,13 +26,13 @@ CREATE TABLE `dev_jobs`.`job_applications` (
 
     CONSTRAINT `fk_job_application_applicant`
         FOREIGN KEY (`applicant_id`)
-        REFERENCES `dev_jobs`.`applicants` (`id`)
+        REFERENCES `applicants` (`id`)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
 
     CONSTRAINT `fk_job_application_job_posting`
         FOREIGN KEY (`job_posting_id`)
-        REFERENCES `dev_jobs`.`job_postings` (`id`)
+        REFERENCES `job_postings` (`id`)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );

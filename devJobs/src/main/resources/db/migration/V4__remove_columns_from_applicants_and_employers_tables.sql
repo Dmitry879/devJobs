@@ -8,7 +8,7 @@ DROP INDEX `username_UNIQUE`;
 ALTER TABLE `applicants` 
 ADD CONSTRAINT `fk_applicants_account_id`
   FOREIGN KEY (`account_id`)
-  REFERENCES `dev_jobs`.`accounts` (`id`)
+  REFERENCES `accounts` (`id`)
   ON DELETE CASCADE
   ON UPDATE CASCADE;
   
